@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 public class HbaseTemplateUtil {
+
     @Autowired
     private HbaseTemplate hbaseTemplate;
 
@@ -48,7 +49,7 @@ public class HbaseTemplateUtil {
     }
 
     /*关闭连接*/
-    public  void closeConn() throws IOException {
+    public void closeConn() throws IOException {
         Connection connection = threadLocalConn.get();
         if (connection == null) return;
         connection.close();
@@ -56,8 +57,9 @@ public class HbaseTemplateUtil {
 
     /**
      * 在HBase上面创建表
-     * @param tableName  表名
-     * @param family 列族名(可以同时传入多个列族名)
+     *
+     * @param tableName 表名
+     * @param family    列族名(可以同时传入多个列族名)
      * @return
      */
     public boolean createTable(String tableName, String... family) {
@@ -65,7 +67,7 @@ public class HbaseTemplateUtil {
         try {
             // 从hbaseTemplate 获取configuration对象,用来初始化admin
 
-            admin = (HBaseAdmin)getConn().getAdmin();
+            admin = (HBaseAdmin) getConn().getAdmin();
             HTableDescriptor tableDescriptor = new HTableDescriptor(TableName.valueOf(tableName));
             for (int i = 0; i < family.length; i++) {
                 tableDescriptor.addFamily(new HColumnDescriptor(family[i]));
@@ -84,8 +86,9 @@ public class HbaseTemplateUtil {
 
     /**
      * Scan 查询所有的hbase数据
+     *
      * @param tableName 表名
-     * @param <T> 返回数据类型
+     * @param <T>       返回数据类型
      * @return
      */
     public <T> List<T> searchAll(String tableName, Class<T> c) {
@@ -134,7 +137,8 @@ public class HbaseTemplateUtil {
 
     /**
      * 通过表名和rowkey获取一行数据转object
-     * @param <T> 数据类型
+     *
+     * @param <T>       数据类型
      * @param tableName 表名
      * @param rowkey
      * @return
@@ -169,6 +173,7 @@ public class HbaseTemplateUtil {
 
     /**
      * 根据表名组合查询
+     *
      * @param c
      * @param tableName
      * @param filterList 查询条件过滤器列表

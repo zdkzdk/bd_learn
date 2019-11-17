@@ -19,15 +19,12 @@ public class HBaseConfiguration {
     @Value("${zookeeper.znode.parent}")
     private String znodeParent;
 
-
     @Bean
     public Configuration getConf() {
-
         Configuration conf = new Configuration();
         conf.set("hbase.zookeeper.quorum", zookeeperQuorum);
         conf.set("hbase.zookeeper.property.clientPort", clientPort);
         //conf.set("zookeeper.znode.parent", znodeParent);
-
         return conf;
     }
 
@@ -35,7 +32,9 @@ public class HBaseConfiguration {
     public HbaseTemplate getHbaseTemplate(@Autowired Configuration conf) {
         return new HbaseTemplate(conf);
     }
-
+    /*
+    工具类
+     */
     @Bean
     public HbaseTemplateUtil getHbaseTemplateUtil(){
         return new HbaseTemplateUtil();

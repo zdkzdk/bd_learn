@@ -30,7 +30,7 @@ public class HbaseTemplateUtil {
     private HbaseTemplate hbaseTemplate;
 
     @Autowired
-    Configuration configuration;
+    private Configuration configuration;
 
     ThreadLocal<Connection> threadLocalConn = new ThreadLocal<>();
 

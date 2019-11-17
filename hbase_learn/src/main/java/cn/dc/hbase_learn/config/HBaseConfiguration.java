@@ -32,8 +32,9 @@ public class HBaseConfiguration {
     public HbaseTemplate getHbaseTemplate(@Autowired Configuration conf) {
         return new HbaseTemplate(conf);
     }
+
     /*
-    工具类
+    工具类，避免使用静态
      */
     @Bean
     public HbaseTemplateUtil getHbaseTemplateUtil(){

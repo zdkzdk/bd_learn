@@ -1,0 +1,10 @@
+hbase:
+  zookeeper:
+    quorum: node102,node103,node104
+    property:
+      clientPort: 2181
+
+zookeeper:
+  znode:
+    parent: /hbase
+

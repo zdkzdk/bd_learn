@@ -3,3 +3,5 @@
 ##  hbase_lean
 hbase和springboot整合的配置  
 spring-data-hbase的基于hbaseTemplate的工具类
+##  scala_lean
+##  kafka-api
